@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-module.exports = mongoose.model('User', new mongoose.Schema({
-  username: String,
-  email: String
+module.exports = mongoose.model('Short', new mongoose.Schema({
+  slug: String,
+  url: String,
+  created: Number
 }))

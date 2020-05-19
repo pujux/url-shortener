@@ -1,0 +1,7 @@
+<script>
+  const redirect = '<%= redirect %>'
+  if (redirect) {
+    console.log('redirecting to '+redirect)
+    setTimeout(()=>window.location.replace(redirect), 500)
+  }
+</script>

@@ -3,11 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boiler-Node</title>
+  <title>URL Shortener</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/index.js"></script>
 </head>
 <body>
-  
+  <div class="container">
+    <% if (short) { %>
+      The short <a href="/<%= short.slug %>"><strong><%= short.slug %></strong></a> now redirects to <a href="<%= short.url %>"><strong><%= short.url %></strong></a>
+    <% } else { %>
+      <form action="/new/short" method="POST">
+        <label for="url">URL:</label>
+        <input name="url" type="url"><br>
+        <input type="submit">
+      </form>
+    <% } %>
+  </div>
 </body>
 </html>

@@ -1,29 +1,23 @@
 {
-  "name": "boiler-node",
+  "name": "url-shortener",
   "version": "1.0.0",
-  "description": "basic nodejs boilerplate with express",
-  "main": "server.js",
+  "description": "url shortener tutorial",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "puf17640",
+  "license": "WTFPL",
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "haikunator": "2.1.2",
     "helmet": "^3.22.0",
     "mongoose": "^5.9.12",
-    "morgan": "^1.10.0"
-  },
-  "devDependencies": {
-    "@aero/eslint-config": "^1.0.1",
-    "eslint": "^6.8.0",
-    "nodemon": "^2.0.3"
+    "morgan": "^1.10.0",
+    "valid-url": "1.0.9"
   }
 }

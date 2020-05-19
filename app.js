@@ -1,7 +1,7 @@
 const express = require('express'),
 	mongoose = require('mongoose'),
-	path = require('path')
-	User = require('./models')
+	path = require('path'),
+	endpointAnalytics = require('express-endpoint-analytics')
 
 const app = express(),
 	config = require('dotenv').config()
@@ -11,7 +11,7 @@ if (config.error) {
 	process.exit(-1)
 }
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/boiler-node', { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true})
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
@@ -29,6 +29,9 @@ app.use(require('express-session')({
 }))
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('helmet')())
+app.use(endpointAnalytics.middleware({ excludeEndpoints: ['/analytics'], excludeActions: ['POST']}))
+
+app.get('/analytics', (req, res, next) => res.send(endpointAnalytics.analytics))
 
 app.use(require('./routes'))
 
