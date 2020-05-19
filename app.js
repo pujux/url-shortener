@@ -29,9 +29,8 @@ app.use(require('express-session')({
 }))
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('helmet')())
-app.use(endpointAnalytics.middleware({ excludeEndpoints: ['/analytics'], excludeActions: ['POST']}))
-
-app.get('/analytics', (req, res, next) => res.send(endpointAnalytics.analytics))
+app.use(endpointAnalytics.middleware({ excludeEndpoints: ['/analytics', '/'], excludeActions: ['POST']}))
+app.use('/analytics', endpointAnalytics.expose)
 
 app.use(require('./routes'))
 
